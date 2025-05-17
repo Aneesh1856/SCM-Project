@@ -21,3 +21,24 @@ def save_feedback(feedback):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    data = request.get_json()
+    name = data.get("name", "Anonymous")
+    message = data.get("message", "")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    feedback = {
+        "name": name,
+        "message": message,
+        "timestamp": timestamp
+    }
+    save_feedback(feedback)
+    return jsonify({"status": "success", "feedback": feedback})
+
+@app.route("/feedbacks")
+def feedbacks():
+    return jsonify(load_feedbacks())
+
+if __name__ == "__main__":
+    app.run(debug=True)

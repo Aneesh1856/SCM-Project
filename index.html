@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Collector</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Collector</h1>
+        <form id="feedback-form" novalidate>
+            <div class="form-group">
+                <label for="name">Your Name (optional)</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="message">Your Feedback</label>
+                <textarea id="message" name="message" placeholder="Your feedback..." required aria-required="true"></textarea>
+                <span class="error-message" id="message-error"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="response-msg" role="alert" aria-live="polite"></div>
+
+        <h2>Previous Feedback</h2>
+        <ul id="feedback-list" aria-label="List of previous feedback"></ul>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
